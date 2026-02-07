@@ -10,7 +10,7 @@ package namespaced
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/namespaced/null/v1alpha1"
+	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/namespaced/project/v1alpha1"
 	v1alpha1namespaced "github.com/tmuntaner/provider-rancher/apis/namespaced/v1alpha1"
 	v1beta1 "github.com/tmuntaner/provider-rancher/apis/namespaced/v1beta1"
 )

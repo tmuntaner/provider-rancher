@@ -6,8 +6,8 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/v2/pkg/config"
 
-	nullCluster "github.com/tmuntaner/provider-rancher/config/cluster/null"
-	nullNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/null"
+	projectCluster "github.com/tmuntaner/provider-rancher/config/cluster/project"
+	projectNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/project"
 )
 
 const (
@@ -33,7 +33,7 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		nullCluster.Configure,
+		projectCluster.Configure,
 	} {
 		configure(pc)
 	}
@@ -57,7 +57,7 @@ func GetProviderNamespaced() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		nullNamespaced.Configure,
+		projectNamespaced.Configure,
 	} {
 		configure(pc)
 	}

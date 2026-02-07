@@ -4,19 +4,19 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-  name: clusterproviderconfigs.rancher.m.crossplane.io
+  name: providerconfigs.rancher.m.openplatform.suse.com
 spec:
-  group: rancher.m.crossplane.io
+  group: rancher.m.openplatform.suse.com
   names:
     categories:
     - crossplane
     - provider
     - rancher
-    kind: ClusterProviderConfig
-    listKind: ClusterProviderConfigList
-    plural: clusterproviderconfigs
-    singular: clusterproviderconfig
-  scope: Cluster
+    kind: ProviderConfig
+    listKind: ProviderConfigList
+    plural: providerconfigs
+    singular: providerconfig
+  scope: Namespaced
   versions:
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp
@@ -29,7 +29,7 @@ spec:
     name: v1beta1
     schema:
       openAPIV3Schema:
-        description: A ClusterProviderConfig configures a Rancher provider.
+        description: A ProviderConfig configures a Rancher provider.
         properties:
           apiVersion:
             description: |-

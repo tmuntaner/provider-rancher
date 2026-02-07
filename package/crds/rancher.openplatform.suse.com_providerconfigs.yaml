@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-  name: providerconfigs.rancher.m.crossplane.io
+  name: providerconfigs.rancher.openplatform.suse.com
 spec:
-  group: rancher.m.crossplane.io
+  group: rancher.openplatform.suse.com
   names:
     categories:
     - crossplane
@@ -16,7 +16,7 @@ spec:
     listKind: ProviderConfigList
     plural: providerconfigs
     singular: providerconfig
-  scope: Namespaced
+  scope: Cluster
   versions:
   - additionalPrinterColumns:
     - jsonPath: .metadata.creationTimestamp

@@ -22,6 +22,16 @@ const (
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
 	errUnmarshalCredentials = "cannot unmarshal rancher credentials as JSON"
+	keyApiURL               = "api_url"
+	keyAccessKey            = "access_key"
+	keySecretKey            = "secret_key"
+	keyTokenKey             = "token_key"
+	keyCACerts              = "ca_certs"
+	keyInsecure             = "insecure"
+	keyBootstrap            = "bootstrap"
+	keyRetries              = "retries"
+	keyTimeout              = "timeout"
+	keyAlias                = "alias"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -51,10 +61,47 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 
 		// Set credentials in Terraform provider configuration.
-		/*ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-		}*/
+		ps.Configuration = map[string]any{}
+		if v, ok := creds[keyApiURL]; ok {
+			ps.Configuration[keyApiURL] = v
+		}
+
+		if v, ok := creds[keyAccessKey]; ok {
+			ps.Configuration[keyAccessKey] = v
+		}
+
+		if v, ok := creds[keySecretKey]; ok {
+			ps.Configuration[keySecretKey] = v
+		}
+
+		if v, ok := creds[keyTokenKey]; ok {
+			ps.Configuration[keyTokenKey] = v
+		}
+
+		if v, ok := creds[keyCACerts]; ok {
+			ps.Configuration[keyCACerts] = v
+		}
+
+		if v, ok := creds[keyInsecure]; ok {
+			ps.Configuration[keyInsecure] = v
+		}
+
+		if v, ok := creds[keyBootstrap]; ok {
+			ps.Configuration[keyBootstrap] = v
+		}
+
+		if v, ok := creds[keyRetries]; ok {
+			ps.Configuration[keyRetries] = v
+		}
+
+		if v, ok := creds[keyTimeout]; ok {
+			ps.Configuration[keyTimeout] = v
+		}
+
+		if v, ok := creds[keyAlias]; ok {
+			ps.Configuration[keyAlias] = v
+		}
+
 		return ps, nil
 	}
 }
