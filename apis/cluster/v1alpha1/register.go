@@ -7,7 +7,7 @@ import (
 
 // Package type metadata.
 const (
-	Group   = "template.crossplane.io"
+	Group   = "rancher.openplatform.suse.com"
 	Version = "v1alpha1"
 )
 
