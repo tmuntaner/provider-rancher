@@ -34,12 +34,12 @@ import (
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
-	//apisCluster "github.com/tmuntaner/provider-rancher/apis/cluster"
-	//apisNamespaced "github.com/tmuntaner/provider-rancher/apis/namespaced"
+	apisCluster "github.com/tmuntaner/provider-rancher/apis/cluster"
+	apisNamespaced "github.com/tmuntaner/provider-rancher/apis/namespaced"
 	"github.com/tmuntaner/provider-rancher/config"
 	"github.com/tmuntaner/provider-rancher/internal/clients"
-	//controllerCluster "github.com/tmuntaner/provider-rancher/internal/controller/cluster"
-	//controllerNamespaced "github.com/tmuntaner/provider-rancher/internal/controller/namespaced"
+	controllerCluster "github.com/tmuntaner/provider-rancher/internal/controller/cluster"
+	controllerNamespaced "github.com/tmuntaner/provider-rancher/internal/controller/namespaced"
 	"github.com/tmuntaner/provider-rancher/internal/features"
 	"github.com/tmuntaner/provider-rancher/internal/version"
 )

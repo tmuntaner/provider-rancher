@@ -1,0 +1,24 @@
+apiVersion: namespace.rancher.openplatform.suse.com/v1alpha1
+kind: Namespace
+metadata:
+  annotations:
+    meta.upbound.io/example-id: namespace/v1alpha1/namespace
+  labels:
+    testing.upbound.io/example-name: foo
+  name: foo
+spec:
+  forProvider:
+    containerResourceLimit:
+    - limitsCpu: 20m
+      limitsMemory: 20Mi
+      requestsCpu: 1m
+      requestsMemory: 1Mi
+    description: foo namespace
+    projectIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    resourceQuota:
+    - limit:
+      - limitsCpu: 100m
+        limitsMemory: 100Mi
+        requestsStorage: 1Gi

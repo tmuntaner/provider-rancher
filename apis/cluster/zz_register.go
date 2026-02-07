@@ -10,8 +10,11 @@ package cluster
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/cluster/project/v1alpha1"
-	v1alpha1cluster "github.com/tmuntaner/provider-rancher/apis/cluster/v1alpha1"
+	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/cluster/catalogv2/v1alpha1"
+	v1alpha1cluster "github.com/tmuntaner/provider-rancher/apis/cluster/cluster/v1alpha1"
+	v1alpha1namespace "github.com/tmuntaner/provider-rancher/apis/cluster/namespace/v1alpha1"
+	v1alpha1project "github.com/tmuntaner/provider-rancher/apis/cluster/project/v1alpha1"
+	v1alpha1clusterapis "github.com/tmuntaner/provider-rancher/apis/cluster/v1alpha1"
 	v1beta1 "github.com/tmuntaner/provider-rancher/apis/cluster/v1beta1"
 )
 
@@ -20,6 +23,9 @@ func init() {
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
 		v1alpha1cluster.SchemeBuilder.AddToScheme,
+		v1alpha1namespace.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
+		v1alpha1clusterapis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)
 }

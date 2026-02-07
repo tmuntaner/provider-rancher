@@ -7,7 +7,11 @@ import (
 // ExternalNameConfigs contains all external name configurations for this
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
-	"rancher2_project": config.NameAsIdentifier,
+	"rancher2_app":        config.NameAsIdentifier,
+	"rancher2_catalog_v2": config.NameAsIdentifier,
+	"rancher2_cluster":    config.NameAsIdentifier,
+	"rancher2_project":    config.NameAsIdentifier,
+	"rancher2_namespace":  config.NameAsIdentifier,
 }
 
 func idWithStub() config.ExternalName {

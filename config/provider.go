@@ -5,8 +5,14 @@ import (
 	_ "embed"
 
 	ujconfig "github.com/crossplane/upjet/v2/pkg/config"
-
+	appCluster "github.com/tmuntaner/provider-rancher/config/cluster/app"
+	catalogV2Cluster "github.com/tmuntaner/provider-rancher/config/cluster/catalog_v2"
+	clusterCluster "github.com/tmuntaner/provider-rancher/config/cluster/cluster"
+	namespaceCluster "github.com/tmuntaner/provider-rancher/config/cluster/namespace"
 	projectCluster "github.com/tmuntaner/provider-rancher/config/cluster/project"
+	appNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/app"
+	clusterNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/cluster"
+	namespaceNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/namespace"
 	projectNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/project"
 )
 
@@ -33,6 +39,10 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
+		appCluster.Configure,
+		catalogV2Cluster.Configure,
+		clusterCluster.Configure,
+		namespaceCluster.Configure,
 		projectCluster.Configure,
 	} {
 		configure(pc)
@@ -57,6 +67,10 @@ func GetProviderNamespaced() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
+		appNamespaced.Configure,
+		catalogV2Cluster.Configure,
+		clusterNamespaced.Configure,
+		namespaceNamespaced.Configure,
 		projectNamespaced.Configure,
 	} {
 		configure(pc)

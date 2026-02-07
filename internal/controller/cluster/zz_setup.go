@@ -9,6 +9,9 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
+	v2 "github.com/tmuntaner/provider-rancher/internal/controller/cluster/catalogv2/v2"
+	cluster "github.com/tmuntaner/provider-rancher/internal/controller/cluster/cluster/cluster"
+	namespace "github.com/tmuntaner/provider-rancher/internal/controller/cluster/namespace/namespace"
 	project "github.com/tmuntaner/provider-rancher/internal/controller/cluster/project/project"
 	providerconfig "github.com/tmuntaner/provider-rancher/internal/controller/cluster/providerconfig"
 )
@@ -17,6 +20,9 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		v2.Setup,
+		cluster.Setup,
+		namespace.Setup,
 		project.Setup,
 		providerconfig.Setup,
 	} {
@@ -31,6 +37,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		v2.SetupGated,
+		cluster.SetupGated,
+		namespace.SetupGated,
 		project.SetupGated,
 		providerconfig.SetupGated,
 	} {
