@@ -6,14 +6,19 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/v2/pkg/config"
 	appCluster "github.com/tmuntaner/provider-rancher/config/cluster/app"
+	appV2Cluster "github.com/tmuntaner/provider-rancher/config/cluster/app_v2"
 	catalogV2Cluster "github.com/tmuntaner/provider-rancher/config/cluster/catalog_v2"
 	clusterCluster "github.com/tmuntaner/provider-rancher/config/cluster/cluster"
 	namespaceCluster "github.com/tmuntaner/provider-rancher/config/cluster/namespace"
 	projectCluster "github.com/tmuntaner/provider-rancher/config/cluster/project"
+	projectRoleCluster "github.com/tmuntaner/provider-rancher/config/cluster/project_role"
 	appNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/app"
+	appV2Namespaced "github.com/tmuntaner/provider-rancher/config/namespaced/app_v2"
+	catalogV2Namespaced "github.com/tmuntaner/provider-rancher/config/namespaced/catalog_v2"
 	clusterNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/cluster"
 	namespaceNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/namespace"
 	projectNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/project"
+	projectRoleNamespaced "github.com/tmuntaner/provider-rancher/config/namespaced/project_role"
 )
 
 const (
@@ -40,10 +45,12 @@ func GetProvider() *ujconfig.Provider {
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
 		appCluster.Configure,
+		appV2Cluster.Configure,
 		catalogV2Cluster.Configure,
 		clusterCluster.Configure,
 		namespaceCluster.Configure,
 		projectCluster.Configure,
+		projectRoleCluster.Configure,
 	} {
 		configure(pc)
 	}
@@ -68,10 +75,12 @@ func GetProviderNamespaced() *ujconfig.Provider {
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
 		appNamespaced.Configure,
-		catalogV2Cluster.Configure,
+		appV2Namespaced.Configure,
+		catalogV2Namespaced.Configure,
 		clusterNamespaced.Configure,
 		namespaceNamespaced.Configure,
 		projectNamespaced.Configure,
+		projectRoleNamespaced.Configure,
 	} {
 		configure(pc)
 	}
