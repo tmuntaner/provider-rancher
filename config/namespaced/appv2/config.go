@@ -1,4 +1,4 @@
-package app_v2
+package appv2
 
 import "github.com/crossplane/upjet/v2/pkg/config"
 

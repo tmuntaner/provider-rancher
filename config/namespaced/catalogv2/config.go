@@ -1,4 +1,4 @@
-package catalog_v2
+package catalogv2
 
 import "github.com/crossplane/upjet/v2/pkg/config"
 

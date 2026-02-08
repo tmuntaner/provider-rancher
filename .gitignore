@@ -6,6 +6,8 @@ cover.out
 /.vendor-new
 .DS_Store
 
+test.yaml
+
 # ignore IDE folders
 .vscode/
 .idea/
