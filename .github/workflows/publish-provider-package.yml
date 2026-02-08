@@ -14,9 +14,17 @@ on:
 
 jobs:
   publish-provider-package:
+    permissions:
+      # Required to create GH releases
+      contents: write
+      # Required to push to GHCR
+      packages: write
+      # Required by cosign keyless signing
+      id-token: write
     uses: crossplane-contrib/provider-workflows/.github/workflows/publish-provider.yml@main
     with:
       repository: provider-rancher
+      registry_org: 'tmuntaner'
       version: ${{ github.event.inputs.version }}
       go-version: ${{ github.event.inputs.go-version }}
       cleanup-disk: true
