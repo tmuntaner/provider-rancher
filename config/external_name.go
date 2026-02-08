@@ -7,10 +7,16 @@ import (
 // ExternalNameConfigs contains all external name configurations for this
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
-	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"null_resource": idWithStub(),
+	"rancher2_app":                           config.NameAsIdentifier,
+	"rancher2_app_v2":                        config.NameAsIdentifier,
+	"rancher2_catalog_v2":                    config.NameAsIdentifier,
+	"rancher2_cluster":                       config.NameAsIdentifier,
+	"rancher2_project":                       config.NameAsIdentifier,
+	"rancher2_project_role_template_binding": config.NameAsIdentifier,
+	"rancher2_namespace":                     config.NameAsIdentifier,
 }
 
+/*
 func idWithStub() config.ExternalName {
 	e := config.IdentifierFromProvider
 	e.GetExternalNameFn = func(tfstate map[string]any) (string, error) {
@@ -19,6 +25,7 @@ func idWithStub() config.ExternalName {
 	}
 	return e
 }
+*/
 
 // ExternalNameConfigurations applies all external name configs listed in the
 // table ExternalNameConfigs and sets the version of those resources to v1beta1

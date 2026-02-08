@@ -9,15 +9,25 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	resource "github.com/crossplane/upjet-provider-template/internal/controller/cluster/null/resource"
-	providerconfig "github.com/crossplane/upjet-provider-template/internal/controller/cluster/providerconfig"
+	v2 "github.com/tmuntaner/provider-rancher/internal/controller/cluster/appv2/v2"
+	v2catalogv2 "github.com/tmuntaner/provider-rancher/internal/controller/cluster/catalogv2/v2"
+	cluster "github.com/tmuntaner/provider-rancher/internal/controller/cluster/cluster/cluster"
+	namespace "github.com/tmuntaner/provider-rancher/internal/controller/cluster/namespace/namespace"
+	project "github.com/tmuntaner/provider-rancher/internal/controller/cluster/project/project"
+	roletemplatebinding "github.com/tmuntaner/provider-rancher/internal/controller/cluster/projectrole/roletemplatebinding"
+	providerconfig "github.com/tmuntaner/provider-rancher/internal/controller/cluster/providerconfig"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		v2.Setup,
+		v2catalogv2.Setup,
+		cluster.Setup,
+		namespace.Setup,
+		project.Setup,
+		roletemplatebinding.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
@@ -31,7 +41,12 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.SetupGated,
+		v2.SetupGated,
+		v2catalogv2.SetupGated,
+		cluster.SetupGated,
+		namespace.SetupGated,
+		project.SetupGated,
+		roletemplatebinding.SetupGated,
 		providerconfig.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {
