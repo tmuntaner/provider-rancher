@@ -1,0 +1,16 @@
+apiVersion: catalog.rancher.m.openplatform.suse.com/v1alpha1
+kind: CatalogV2
+metadata:
+  annotations:
+    meta.upbound.io/example-id: catalog/v1alpha1/catalogv2
+  labels:
+    testing.upbound.io/example-name: foo
+  name: foo
+  namespace: crossplane-system
+spec:
+  forProvider:
+    clusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    gitBranch: <GIT_BRANCH>
+    gitRepo: <GIT_REPO_URL>

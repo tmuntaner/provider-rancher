@@ -10,12 +10,11 @@ package namespaced
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/namespaced/appv2/v1alpha1"
-	v1alpha1catalogv2 "github.com/tmuntaner/provider-rancher/apis/namespaced/catalogv2/v1alpha1"
+	v1alpha1 "github.com/tmuntaner/provider-rancher/apis/namespaced/app/v1alpha1"
+	v1alpha1catalog "github.com/tmuntaner/provider-rancher/apis/namespaced/catalog/v1alpha1"
 	v1alpha1cluster "github.com/tmuntaner/provider-rancher/apis/namespaced/cluster/v1alpha1"
 	v1alpha1namespace "github.com/tmuntaner/provider-rancher/apis/namespaced/namespace/v1alpha1"
 	v1alpha1project "github.com/tmuntaner/provider-rancher/apis/namespaced/project/v1alpha1"
-	v1alpha1projectrole "github.com/tmuntaner/provider-rancher/apis/namespaced/projectrole/v1alpha1"
 	v1alpha1namespaced "github.com/tmuntaner/provider-rancher/apis/namespaced/v1alpha1"
 	v1beta1 "github.com/tmuntaner/provider-rancher/apis/namespaced/v1beta1"
 )
@@ -24,11 +23,10 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
-		v1alpha1catalogv2.SchemeBuilder.AddToScheme,
+		v1alpha1catalog.SchemeBuilder.AddToScheme,
 		v1alpha1cluster.SchemeBuilder.AddToScheme,
 		v1alpha1namespace.SchemeBuilder.AddToScheme,
 		v1alpha1project.SchemeBuilder.AddToScheme,
-		v1alpha1projectrole.SchemeBuilder.AddToScheme,
 		v1alpha1namespaced.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)

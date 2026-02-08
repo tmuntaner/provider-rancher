@@ -1,0 +1,15 @@
+apiVersion: project.rancher.openplatform.suse.com/v1alpha1
+kind: ProjectRoleTemplateBinding
+metadata:
+  annotations:
+    meta.upbound.io/example-id: project/v1alpha1/projectroletemplatebinding
+  labels:
+    testing.upbound.io/example-name: foo
+  name: foo
+spec:
+  forProvider:
+    projectIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    roleTemplateId: <role_template_id>
+    userId: <user_id>

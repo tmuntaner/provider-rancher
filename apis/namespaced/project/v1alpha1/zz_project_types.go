@@ -207,7 +207,16 @@ type ProjectInitParameters struct {
 	Annotations map[string]*string `json:"annotations,omitempty" tf:"annotations,omitempty"`
 
 	// The cluster id where create project (string)
+	// +crossplane:generate:reference:type=github.com/tmuntaner/provider-rancher/apis/namespaced/cluster/v1alpha1.Cluster
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in cluster to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in cluster to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
 
 	// Default containers resource limits on project (List maxitem:1)
 	ContainerResourceLimit []ContainerResourceLimitInitParameters `json:"containerResourceLimit,omitempty" tf:"container_resource_limit,omitempty"`
@@ -405,8 +414,17 @@ type ProjectParameters struct {
 	Annotations map[string]*string `json:"annotations,omitempty" tf:"annotations,omitempty"`
 
 	// The cluster id where create project (string)
+	// +crossplane:generate:reference:type=github.com/tmuntaner/provider-rancher/apis/namespaced/cluster/v1alpha1.Cluster
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in cluster to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in cluster to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
 
 	// Default containers resource limits on project (List maxitem:1)
 	// +kubebuilder:validation:Optional

@@ -47,3 +47,43 @@ func (mg *Project) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
 func (mg *Project) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
+
+// GetCondition of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ProjectRoleTemplateBinding.
+func (mg *ProjectRoleTemplateBinding) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}

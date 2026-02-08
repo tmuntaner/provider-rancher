@@ -6,8 +6,9 @@ const shortGroup = "app"
 
 // Configure configures individual resources by adding custom ResourceConfigurators.
 func Configure(p *config.Provider) {
-	p.AddResourceConfigurator("rancher2_app", func(r *config.Resource) {
+	p.AddResourceConfigurator("rancher2_app_v2", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
+		r.Kind = "AppV2"
 
 		r.MarkAsRequired(
 			"catalog_name",
@@ -16,9 +17,5 @@ func Configure(p *config.Provider) {
 			"target_namespace",
 			"template_name",
 		)
-
-		r.References["catalog_name"] = config.Reference{
-			TerraformName: "rancher2_catalog_v2",
-		}
 	})
 }

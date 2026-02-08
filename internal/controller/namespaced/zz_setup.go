@@ -9,12 +9,12 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	v2 "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/appv2/v2"
-	v2catalogv2 "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/catalogv2/v2"
+	appv2 "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/app/appv2"
+	catalogv2 "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/catalog/catalogv2"
 	cluster "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/cluster/cluster"
 	namespace "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/namespace/namespace"
 	project "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/project/project"
-	roletemplatebinding "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/projectrole/roletemplatebinding"
+	projectroletemplatebinding "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/project/projectroletemplatebinding"
 	providerconfig "github.com/tmuntaner/provider-rancher/internal/controller/namespaced/providerconfig"
 )
 
@@ -22,12 +22,12 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		v2.Setup,
-		v2catalogv2.Setup,
+		appv2.Setup,
+		catalogv2.Setup,
 		cluster.Setup,
 		namespace.Setup,
 		project.Setup,
-		roletemplatebinding.Setup,
+		projectroletemplatebinding.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
@@ -41,12 +41,12 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		v2.SetupGated,
-		v2catalogv2.SetupGated,
+		appv2.SetupGated,
+		catalogv2.SetupGated,
 		cluster.SetupGated,
 		namespace.SetupGated,
 		project.SetupGated,
-		roletemplatebinding.SetupGated,
+		projectroletemplatebinding.SetupGated,
 		providerconfig.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {

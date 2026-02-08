@@ -9,7 +9,9 @@ metadata:
   namespace: crossplane-system
 spec:
   forProvider:
-    clusterId: <CLUSTER_ID>
+    clusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
     containerResourceLimit:
     - limitsCpu: 20m
       limitsMemory: 20Mi

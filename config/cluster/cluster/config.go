@@ -8,6 +8,7 @@ const shortGroup = "cluster"
 func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("rancher2_cluster", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
+		r.Kind = "Cluster"
 
 		r.MarkAsRequired(
 			"name",

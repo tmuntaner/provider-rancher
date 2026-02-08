@@ -8,6 +8,7 @@ const shortGroup = "namespace"
 func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("rancher2_namespace", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
+		r.Kind = "Namespace"
 
 		r.MarkAsRequired(
 			"name",
